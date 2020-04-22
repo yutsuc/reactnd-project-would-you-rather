@@ -1,9 +1,9 @@
 .App {
-  text-align: center;
+    text-align: center;
 }
 
 .nav {
-  display: flex;
-  flex-direction: row;
- justify-content: space-evenly;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
 }
