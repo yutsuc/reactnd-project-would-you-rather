@@ -2,11 +2,13 @@ import React from "react";
 import { Button, Card, CardContent, CardActions, TextField, Divider } from "@material-ui/core";
 import { connect } from "react-redux";
 import { handleAddQuestion } from "../actions/questions";
+import { Redirect } from "react-router-dom";
 
 class NewQuestion extends React.Component {
     state = {
         option1: "",
-        option2: ""
+        option2: "",
+        toHome: false,
     }
 
     onChangeOptions = (e) => {
@@ -20,8 +22,16 @@ class NewQuestion extends React.Component {
         e.preventDefault();
         const { option1, option2 } = this.state;
         this.props.dispatch(handleAddQuestion(option1, option2));
+        this.setState({
+            option1: "",
+            option2: "",
+            toHome: true,
+        });
     }
     render = () => {
+        if(this.state.toHome) {
+            return (<Redirect to="/" />);
+        }
         return (
             <div>
                 <Card className="new-question">
