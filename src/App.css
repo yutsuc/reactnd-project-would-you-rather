@@ -1,9 +1,21 @@
 .App {
+    padding: 10px;
+    height: 100%;
     text-align: center;
 }
 
-.nav {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
+.new-question {
+    margin: 0 auto 0 auto;
+    width: 50%;
+    text-align: left;
+}
+
+.fullwidth {
+    width: 100%;
+}
+
+.question-divider {
+    margin: 20px 0 10px 0;
+    text-align: center;
+    color: gray;
 }
