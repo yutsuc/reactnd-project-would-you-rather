@@ -1,6 +1,8 @@
 import React from "react";
 import { Avatar, Button, Card, CardContent, Divider, Radio, RadioGroup, FormControlLabel } from "@material-ui/core";
 import { Redirect } from "react-router-dom";
+import { connect } from "react-redux";
+import { handleSaveQuestionAnswer } from "../actions/questions";
 
 class QuestioVote extends React.Component {
     state = {
@@ -16,8 +18,13 @@ class QuestioVote extends React.Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        //dispatch update
-        this.setState ({
+        const { dispatch, question } = this.props;
+        const { pickedValue } = this.state;
+        dispatch(handleSaveQuestionAnswer({
+            qid: question.id,
+            answer: pickedValue
+        }))
+        this.setState({
             pickedValue: "",
             toQuestion: true,
         });
@@ -29,7 +36,7 @@ class QuestioVote extends React.Component {
         if (toQuestion) {
             return <Redirect to={`/questions/${question.id}`} />
         }
-        
+
         if (question === null) {
             return <p>This Tweet doesn't exist</p>
         }
@@ -60,4 +67,4 @@ class QuestioVote extends React.Component {
     }
 }
 
-export default QuestioVote;
+export default connect()(QuestioVote);

@@ -12,6 +12,8 @@ class QuestioSummary extends React.Component {
         const optionOneVotes = optionOne.votes.length;
         const optionTwoVotes = optionTwo.votes.length;
         const totalVotes = optionOneVotes + optionTwoVotes;
+        const optionOnePercent = optionOneVotes/totalVotes*100;
+        const optionTwoPercent = optionTwoVotes/totalVotes*100;
         return (
             <div>
                 <Card className="question">
@@ -25,15 +27,15 @@ class QuestioSummary extends React.Component {
                                 <Badge color="secondary" badgeContent="Your Choice" className="question-badge" invisible={optionOne.votes.indexOf(authedUser) < 0}>
                                     <Paper className="question-choice">
                                         <h4>{optionOne.text}</h4>
-                                        <LinearProgress variant="determinate" color="primary" value={optionOneVotes/totalVotes*100} className="question-barchart" />
-                                        <p>{optionOneVotes} out of {totalVotes} votes</p>
+                                        <LinearProgress variant="determinate" color="primary" value={optionOnePercent} className="question-barchart" />
+                                        <p>{optionOnePercent.toFixed(2)}%, {optionOneVotes} out of {totalVotes} votes</p>
                                     </Paper>
                                 </Badge>
                                 <Badge color="secondary" badgeContent="Your Choice" className="question-badge" invisible={optionTwo.votes.indexOf(authedUser) < 0}>
                                     <Paper className="question-choice">
                                         <h4>{optionTwo.text}</h4>
-                                        <LinearProgress variant="determinate" color="primary" value={optionTwoVotes/totalVotes*100} className="question-barchart" />
-                                        <p>{optionTwoVotes} out of {totalVotes} votes</p>
+                                        <LinearProgress variant="determinate" color="primary" value={optionTwoPercent} className="question-barchart" />
+                                        <p>{optionTwoPercent.toFixed(2)}%, {optionTwoVotes} out of {totalVotes} votes</p>
                                     </Paper>
                                 </Badge>
                             </div>
