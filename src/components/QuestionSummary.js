@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 
 class QuestioSummary extends React.Component {
     render = () => {
-        const { author, question } = this.props;
+        const { authedUser, author, question } = this.props;
         if (question === null) {
             return <p>This Tweet doesn't exist</p>
         }
@@ -22,14 +22,14 @@ class QuestioSummary extends React.Component {
                             <Avatar alt={author.name} src={author.avatarURL} className="question-avatar">{author.name["0"]}</Avatar>
                             <div className="question-detail">
                                 <h3>Results:</h3>
-                                <Badge color="secondary" badgeContent="Your Choice" className="question-badge">
+                                <Badge color="secondary" badgeContent="Your Choice" className="question-badge" invisible={optionOne.votes.indexOf(authedUser) < 0}>
                                     <Paper className="question-choice">
                                         <h4>{optionOne.text}</h4>
                                         <LinearProgress variant="determinate" color="primary" value={optionOneVotes/totalVotes*100} className="question-barchart" />
                                         <p>{optionOneVotes} out of {totalVotes} votes</p>
                                     </Paper>
                                 </Badge>
-                                <Badge color="secondary" badgeContent="Your Choice" className="question-badge">
+                                <Badge color="secondary" badgeContent="Your Choice" className="question-badge" invisible={optionTwo.votes.indexOf(authedUser) < 0}>
                                     <Paper className="question-choice">
                                         <h4>{optionTwo.text}</h4>
                                         <LinearProgress variant="determinate" color="primary" value={optionTwoVotes/totalVotes*100} className="question-barchart" />
