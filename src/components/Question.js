@@ -8,9 +8,6 @@ class Question extends React.Component {
     render = () => {
         const { author, question} = this.props;
 
-        if (question === null) {
-            return <p>This Tweet doesn't exist</p>
-        }
         return (
             <div>
                 <Card className="card-container">

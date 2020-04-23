@@ -1,23 +1,20 @@
 import React from 'react';
 import '../App.css';
 import { connect } from "react-redux";
-import { BrowserRouter, Route } from 'react-router-dom';
-import { handleInitialData } from "../actions/shared";
+import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
 import LoadingBar from "react-redux-loading-bar";
+import { Divider } from '@material-ui/core';
 import Nav from "../components/Nav";
 import Dashboard from "../components/Dashboard";
 import NewQuestion from "../components/NewQuestion";
 import Leaderboard from "../components/Leaderboard";
 import QuestionPage from "../components/QuestionPage";
-import { Divider } from '@material-ui/core';
+import Login from "../components/Login";
 
 
 class App extends React.Component {
-    componentDidMount = () => {
-        this.props.dispatch(handleInitialData());
-    }
-
     render = () => {
+        const { loading } = this.props;
         return (
             <BrowserRouter>
                 <LoadingBar />
@@ -25,15 +22,15 @@ class App extends React.Component {
                     <Nav />
                     <Divider />
                     <br />
-                    {!this.props.loading &&
-                        <div>
-                            <Route path="/" exact component={Dashboard} />
-                            <Route path="/add" exact component={NewQuestion} />
-                            <Route path="/leaderboard" exact component={Leaderboard} />
-                            <Route path="/questions/:id" exact component={QuestionPage} />
+
+                    <Switch>
+                            <Route exact path="/" render={({ location }) => !loading ? (<Dashboard />) : (<Redirect to={{ pathname: "/login", state: { from: location } }} />)} />
+                            <Route exact path="/add" render={({ location }) => !loading ? (<NewQuestion />) : (<Redirect to={{ pathname: "/login", state: { from: location }}} /> )} />
+                            <Route exact path="/leaderboard"  render={({ location }) => !loading ? (<Leaderboard />) : (<Redirect to={{ pathname: "/login", state: { from: location } }} />)} />
+                            <Route exact path="/questions/:id" render={({ location }) => !loading ? (<QuestionPage />) : (<Redirect to={{ pathname: "/login", state: { from: location } }} /> )}/>
+                            <Route exact path="/login" component={Login} />
                             <a href="https://icons8.com/">User icons by Icons8</a>
-                        </div>
-                    }
+                        </Switch>
                 </div>
             </BrowserRouter>
         );

@@ -1,11 +1,18 @@
 import React from "react";
 import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 import QuestionVote from "../components/QuestionVote";
 import QuestionSummary from "../components/QuestionSummary";
 
 class QuestionPage extends React.Component {
     render = () => {
         const { author, question, answered } = this.props
+        if (question === null) {
+            return (<div>
+                <h1>404!</h1>
+                <h2>It looks like something went wrong. This question doesn't exits.</h2>
+            </div>);
+        }
         return (
             <div className="question-page">
                 {!answered && <QuestionVote author={author} question={question} />}
@@ -25,4 +32,4 @@ const mapStateToProps = ({ users, questions, authedUser }, props) => {
     }
 }
 
-export default connect(mapStateToProps)(QuestionPage);
+export default withRouter(connect(mapStateToProps)(QuestionPage));

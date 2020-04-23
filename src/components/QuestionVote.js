@@ -36,11 +36,6 @@ class QuestioVote extends React.Component {
         if (toQuestion) {
             return <Redirect to={`/questions/${question.id}`} />
         }
-
-        if (question === null) {
-            return <p>This Tweet doesn't exist</p>
-        }
-
         return (
             <div>
                 <Card className="card-container">

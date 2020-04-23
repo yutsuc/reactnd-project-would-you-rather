@@ -5,9 +5,6 @@ import { connect } from "react-redux";
 class QuestioSummary extends React.Component {
     render = () => {
         const { authedUser, author, question } = this.props;
-        if (question === null) {
-            return <p>This Tweet doesn't exist</p>
-        }
         const {optionOne, optionTwo} = question;
         const optionOneVotes = optionOne.votes.length;
         const optionTwoVotes = optionTwo.votes.length;

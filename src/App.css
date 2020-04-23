@@ -15,15 +15,12 @@
     flex: 2 2 auto;
 }
 
-.dashboard {
+.dashboard,
+.leaderboard,
+.login {
     width: 50%;
     margin: 0 auto 0 auto;
     padding: 0 0 10px 0;
-}
-
-.leaderboard {
-    width: 50%;
-    margin: 0 auto 0 auto;
 }
 
 .question-page {
@@ -86,5 +83,11 @@
 .user-score {
     margin: auto 0 auto 0;
     width: 100px !important;
+    text-align: center;
+}
+
+.login-info {
+    display: flex;
+    flex-direction: column;
     text-align: center;
 }
