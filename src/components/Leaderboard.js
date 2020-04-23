@@ -6,7 +6,7 @@ class Leaderboard extends React.Component {
     render = () => {
         const {userIds} = this.props;
         return (
-            <div>
+            <div className="leaderboard">
                 {userIds.map(id => (
                     <UserSummary id={id} key={id} />
                 ))}

@@ -16,12 +16,12 @@ class QuestioSummary extends React.Component {
         const optionTwoPercent = optionTwoVotes/totalVotes*100;
         return (
             <div>
-                <Card className="question">
+                <Card className="card-container">
                     <CardContent>
                         <h2>Asked by {author.name}</h2>
                         <Divider />
-                        <div className="question-info">
-                            <Avatar alt={author.name} src={author.avatarURL} className="question-avatar">{author.name["0"]}</Avatar>
+                        <div className="card-info">
+                            <Avatar alt={author.name} src={author.avatarURL}  className="avatar">{author.name["0"]}</Avatar>
                             <div className="question-detail">
                                 <h3>Results:</h3>
                                 <Badge color="secondary" badgeContent="Your Choice" className="question-badge" invisible={optionOne.votes.indexOf(authedUser) < 0}>

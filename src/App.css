@@ -14,28 +14,33 @@
     padding: 0 0 10px 0;
 }
 
+.leaderboard {
+    width: 50%;
+    margin: 0 auto 0 auto;
+}
+
 .question-page {
     width: 50%;
     margin: 0 auto 0 auto;
 }
 
-.question {
+.card-container {
     margin: 10px auto 10px auto;
     width: 95%;
     text-align: left;
 }
 
-.question-info {
+.card-info {
     display: flex;
 }
 
-.question-avatar {
+.avatar {
     margin: auto 0 auto 0;
     width: 100px !important;
     height: 100px !important;
 }
 
-.question-detail {
+.question-detail, .user-detail {
     width: 100%;
     margin: 0 0 0 20px;
 }
@@ -69,4 +74,10 @@
 
 .question-barchart {
     height: 30px !important;
+}
+
+.user-score {
+    margin: auto 0 auto 0;
+    width: 100px !important;
+    text-align: center;
 }

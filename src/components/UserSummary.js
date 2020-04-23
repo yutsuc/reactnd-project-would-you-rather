@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Avatar, Button, Card, CardContent, Divider } from "@material-ui/core";
+import { Avatar, Card, CardContent, Divider } from "@material-ui/core";
 
 
 class UserSummary extends React.Component {
@@ -8,17 +8,19 @@ class UserSummary extends React.Component {
         const { user } = this.props;
         return (
             <div>
-                <Card>
+                <Card className="card-container">
                     <CardContent>
-                        <div>
-                            <Avatar alt={user.name} src={user.avatarURL}>{user.name["0"]}</Avatar>
-                            <div>
+                        <div className="card-info">
+                            <Avatar alt={user.name} src={user.avatarURL} className="avatar">{user.name["0"]}</Avatar>
+                            <div className="user-detail">
                                 <h2>{user.name}</h2>
-                                <p>Answered Questions {Object.keys(user.answers).length}</p>
-                                <p>Created Questions {user.questions.length}</p>
+                                <p>Answered Questions: <strong>{Object.keys(user.answers).length}</strong></p>
+                                <Divider />
+                                <p>Created Questions: <strong>{user.questions.length}</strong></p>
                             </div>
-                            <div>
-                                score: {user.questions.length + Object.keys(user.answers).length}
+                            <div className="user-score">
+                                <h3>Score</h3>
+                                <p><strong>{user.questions.length + Object.keys(user.answers).length}</strong></p>
                             </div>
                         </div>
                     </CardContent>

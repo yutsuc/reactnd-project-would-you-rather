@@ -13,12 +13,12 @@ class Question extends React.Component {
         }
         return (
             <div>
-                <Card className="question">
+                <Card className="card-container">
                     <CardContent>
                         <h2>{author.name} asks:</h2>
                         <Divider />
-                        <div className="question-info">
-                            <Avatar alt={author.name} src={author.avatarURL} className="question-avatar">{author.name["0"]}</Avatar>
+                        <div className="card-info">
+                            <Avatar alt={author.name} src={author.avatarURL}  className="avatar">{author.name["0"]}</Avatar>
                             <div className="question-detail">
                                 <h3>Would you rather</h3>
                                 <p>...{question.optionOne.text}...</p>
