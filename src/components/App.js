@@ -9,6 +9,7 @@ import Dashboard from "../components/Dashboard";
 import NewQuestion from "../components/NewQuestion";
 import Leaderboard from "../components/Leaderboard";
 import QuestionPage from "../components/QuestionPage";
+import { Divider } from '@material-ui/core';
 
 
 class App extends React.Component {
@@ -22,6 +23,8 @@ class App extends React.Component {
                 <LoadingBar />
                 <div className="App">
                     <Nav />
+                    <Divider />
+                    <br />
                     {!this.props.loading &&
                         <div>
                             <Route path="/" exact component={Dashboard} />
