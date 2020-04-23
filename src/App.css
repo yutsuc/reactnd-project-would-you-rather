@@ -8,6 +8,27 @@
     margin: 10px 0 20px 0;
 }
 
+.question {
+    margin: 10px auto 10px auto;
+    width: 50%;
+    text-align: left;
+}
+
+.question-info {
+    display: flex;
+}
+
+.question-avatar {
+    margin: auto 0 auto 0;
+    width: 100px !important;
+    height: 100px !important;
+}
+
+.question-detail {
+    width: 100%;
+    margin: 0 0 0 20px;
+}
+
 .new-question {
     margin: 0 auto 0 auto;
     width: 50%;
