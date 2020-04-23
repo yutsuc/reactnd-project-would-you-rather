@@ -1,10 +1,16 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Avatar, Button, Card, CardContent, Divider } from "@material-ui/core";
+import { Avatar, Button, Card, CardContent, Divider} from "@material-ui/core";
+import { Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 
 class Question extends React.Component {
     render = () => {
-        const { question, author } = this.props;
+        const { author, question} = this.props;
+
+        if (question === null) {
+            return <p>This Tweet doesn't exist</p>
+        }
         return (
             <div>
                 <Card className="question">
@@ -16,7 +22,9 @@ class Question extends React.Component {
                             <div className="question-detail">
                                 <h3>Would you rather</h3>
                                 <p>...{question.optionOne.text}...</p>
-                                <Button variant="outlined" fullWidth>View Poll</Button>
+                                <Button variant="outlined" fullWidth component={Link} to={`/questions/${question.id}`}>
+                                    View Poll
+                                </Button>
                             </div>
                         </div>
                     </CardContent>
@@ -27,10 +35,12 @@ class Question extends React.Component {
 }
 
 const mapStateToProps = ({ users, questions }, { id }) => {
+    const question = questions[id];
+
     return {
-        question: questions[id],
-        author: users[questions[id].author],
+        question: question ? question : null,
+        author: question ? users[question.author] : null,
     };
 }
 
-export default connect(mapStateToProps)(Question);
+export default withRouter(connect(mapStateToProps)(Question));

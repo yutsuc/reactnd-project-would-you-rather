@@ -8,6 +8,7 @@ import Nav from "../components/Nav";
 import Dashboard from "../components/Dashboard";
 import NewQuestion from "../components/NewQuestion";
 import Leaderboard from "../components/Leaderboard";
+import QuestionPage from "../components/QuestionPage";
 
 
 class App extends React.Component {
@@ -26,6 +27,7 @@ class App extends React.Component {
                             <Route path="/" exact component={Dashboard} />
                             <Route path="/add" exact component={NewQuestion} />
                             <Route path="/leaderboard" exact component={Leaderboard} />
+                            <Route path="/questions/:id" exact component={QuestionPage} />
                         </div>}
 
                 </div>
