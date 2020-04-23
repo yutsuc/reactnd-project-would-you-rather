@@ -42,8 +42,8 @@ class Dashboard extends React.Component {
 const mapStateToProps = ({ users, questions, authedUser }) => {
     const user = users[authedUser];
     return {
-        answeredQuestionIds: user ? Object.keys(user.answers) : [],
-        unansweredQuestionIds: user ? Object.keys(questions).filter(qid => Object.keys(user.answers).indexOf(qid) < 0) : [],
+        answeredQuestionIds: user ? Object.keys(user.answers).sort((a, b) => questions[b].timestamp - questions[a].timestamp) : [],
+        unansweredQuestionIds: user ? Object.keys(questions).filter(qid => Object.keys(user.answers).indexOf(qid) < 0).sort((a, b) => questions[b].timestamp - questions[a].timestamp) : [],
     };
 }
 
