@@ -1,24 +1,50 @@
 import React from "react";
 import { connect } from "react-redux"
+import { Paper, Tabs, Tab } from "@material-ui/core";
 import Question from "../components/Question";
 
 class Dashboard extends React.Component {
+    state = {
+        tabIndex: 0
+    }
+
+    handleChangeView = (event, value) => {
+        this.setState({
+            tabIndex: value,
+        })
+    }
     render = () => {
-        const { questionIds } = this.props
+        const { answeredQuestionIds, unansweredQuestionIds } = this.props;
+        const { tabIndex } = this.state;
         return (
             <div>
-                {questionIds.map(qid => (
-                    <Question key={qid} id={qid} />
-                ))}
+                <Paper className="dashboard">
+                    <Tabs value={tabIndex} centered onChange={this.handleChangeView}>
+                        <Tab label="Unanswered" />
+                        <Tab label="Answered" />
+                    </Tabs>
+                    <div hidden={tabIndex !== 0}>
+                        {unansweredQuestionIds.map(qid => (
+                            <Question key={qid} id={qid} />
+                        ))}
+                    </div>
+                    <div hidden={tabIndex !== 1}>
+                        {answeredQuestionIds.map(qid => (
+                            <Question key={qid} id={qid} />
+                        ))}
+                    </div>
+                </Paper>
                 <a href="https://icons8.com/">User icons by Icons8</a>
             </div>
         );
     }
 }
 
-const mapStateToProps = ({ questions }) => {
+const mapStateToProps = ({ users, questions, authedUser }) => {
+    const user = users[authedUser];
     return {
-        questionIds: Object.keys(questions),
+        answeredQuestionIds: user ? Object.keys(user.answers) : [],
+        unansweredQuestionIds: user ? Object.keys(questions).filter(qid => Object.keys(user.answers).indexOf(qid) < 0) : [],
     };
 }
 
