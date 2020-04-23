@@ -28,8 +28,9 @@ class App extends React.Component {
                             <Route path="/add" exact component={NewQuestion} />
                             <Route path="/leaderboard" exact component={Leaderboard} />
                             <Route path="/questions/:id" exact component={QuestionPage} />
-                        </div>}
-
+                            <a href="https://icons8.com/">User icons by Icons8</a>
+                        </div>
+                    }
                 </div>
             </BrowserRouter>
         );

@@ -34,7 +34,6 @@ class Dashboard extends React.Component {
                         ))}
                     </div>
                 </Paper>
-                <a href="https://icons8.com/">User icons by Icons8</a>
             </div>
         );
     }
