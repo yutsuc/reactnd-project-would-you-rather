@@ -1,6 +1,6 @@
 # Would You Rather...? Project
 
-This app is the popular Would You Rather...? game. It allows you to create questions and see results for each quesiton, and has a leaderboard that captures which user has been most active.
+This app is the popular Would You Rather...? game. It allows you to create questions and see results for each question, and has a leaderboard that captures which user has been most active.
 
 ## TL;DR
 
