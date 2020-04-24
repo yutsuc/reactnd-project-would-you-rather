@@ -28,6 +28,7 @@ To get started developing right away:
     │   ├── App.js # Routes different paths to different components
     │   ├── Dashboard.js # Displays a list of Questions separated by answered and unanswered
     │   ├── Leaderboard.js # Displays a list of User Summary
+    │   ├── Login.js # User gets redirected to this page if they are not logged in
     │   ├── Nav.js # Navigaton component that links to different components
     │   ├── NewQuestion.js # Component for creating a new question
     │   ├── Question.js # Displays question preview and a button to vote
